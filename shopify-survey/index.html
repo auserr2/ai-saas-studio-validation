@@ -102,8 +102,11 @@
     <div class="tag">Early Access</div>
     <h1>Post-purchase surveys for Shopify.<br><span>Flat pricing. No surprises.</span></h1>
     <p>Built for Shopify merchants who got hit by Fairing's price increases. Know where your customers really come from — without paying more every time you scale.</p>
-    <form action="#" onsubmit="handleSubmit(event)">
-      <input type="email" placeholder="you@yourstore.com" required>
+    <form action="https://formsubmit.co/Aminali10@icloud.com" method="POST">
+      <input type="hidden" name="_subject" value="[Shopify Survey] New early access request">
+      <input type="hidden" name="_captcha" value="false">
+      <input type="hidden" name="product" value="shopify-survey">
+      <input type="email" name="email" placeholder="you@yourstore.com" required>
       <button type="submit">Get early access</button>
     </form>
     <p class="fine-print">$39/month flat. AI attribution analysis. Klaviyo + GA4 integration. No order-volume pricing.</p>
@@ -111,13 +114,5 @@
       <p>Built by a Shopify merchant who got hit with a 400% price increase. Currently in beta.</p>
     </div>
   </div>
-  <script>
-    function handleSubmit(e) {
-      e.preventDefault();
-      const email = e.target.querySelector('input').value;
-      // In production: send to email capture service
-      alert('Thanks! We\'ll be in touch. Email: ' + email);
-    }
-  </script>
 </body>
 </html>

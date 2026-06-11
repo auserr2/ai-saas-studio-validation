@@ -102,8 +102,11 @@
     <div class="tag">Early Access</div>
     <h1>Agency client reports<br>that <span>write themselves.</span></h1>
     <p>Connect GA4, Meta Ads, and Google Ads. AI pulls the data, writes the narrative, and sends a branded PDF to your client. You review. That's it.</p>
-    <form action="#" onsubmit="handleSubmit(event)">
-      <input type="email" placeholder="you@youragency.com" required>
+    <form action="https://formsubmit.co/Aminali10@icloud.com" method="POST">
+      <input type="hidden" name="_subject" value="[Agency Reports] New early access request">
+      <input type="hidden" name="_captcha" value="false">
+      <input type="hidden" name="product" value="agency-reports">
+      <input type="email" name="email" placeholder="you@youragency.com" required>
       <button type="submit">Get early access</button>
     </form>
     <p class="fine-print">$49/month flat — no per-client fees. Built for agencies who are done paying AgencyAnalytics $20/client/month.</p>
@@ -111,12 +114,5 @@
       <p>Built by an agency owner after AgencyAnalytics doubled their per-client fee. Currently accepting beta testers.</p>
     </div>
   </div>
-  <script>
-    function handleSubmit(e) {
-      e.preventDefault();
-      const email = e.target.querySelector('input').value;
-      alert('Thanks! We\'ll be in touch. Email: ' + email);
-    }
-  </script>
 </body>
 </html>
