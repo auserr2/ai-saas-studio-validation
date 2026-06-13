@@ -53,12 +53,15 @@
     }
     form {
       display: flex;
+      flex-direction: column;
       gap: 10px;
       max-width: 420px;
       margin: 0 auto 20px;
     }
-    input[type="email"] {
+    .row { display: flex; gap: 10px; }
+    input[type="email"], textarea {
       flex: 1;
+      width: 100%;
       padding: 14px 16px;
       font-size: 15px;
       border: 1px solid #27272a;
@@ -66,9 +69,11 @@
       background: #18181b;
       color: #ffffff;
       outline: none;
+      font-family: inherit;
     }
-    input[type="email"]:focus { border-color: #4ade80; }
-    input[type="email"]::placeholder { color: #52525b; }
+    textarea { resize: vertical; min-height: 64px; }
+    input[type="email"]:focus, textarea:focus { border-color: #4ade80; }
+    input[type="email"]::placeholder, textarea::placeholder { color: #52525b; }
     button {
       padding: 14px 22px;
       font-size: 15px;
@@ -81,6 +86,7 @@
       white-space: nowrap;
     }
     button:hover { background: #22c55e; }
+    .honey { position: absolute; left: -9999px; opacity: 0; height: 0; width: 0; }
     .fine-print {
       font-size: 13px;
       color: #52525b;
@@ -105,14 +111,25 @@
     <form action="https://formsubmit.co/Aminali10@icloud.com" method="POST">
       <input type="hidden" name="_subject" value="[Shopify Survey] New early access request">
       <input type="hidden" name="_captcha" value="false">
+      <input type="hidden" name="_template" value="table">
+      <input type="hidden" name="_next" value="https://auserr2.github.io/ai-saas-studio-validation/shopify-survey/thanks.html">
       <input type="hidden" name="product" value="shopify-survey">
-      <input type="email" name="email" placeholder="you@yourstore.com" required>
-      <button type="submit">Get early access</button>
+      <input type="hidden" name="source" id="source" value="direct">
+      <input type="text" name="_honey" class="honey" tabindex="-1" autocomplete="off">
+      <div class="row">
+        <input type="email" name="email" placeholder="you@yourstore.com" required>
+        <button type="submit">Get early access</button>
+      </div>
+      <textarea name="situation" placeholder="Optional: which survey app are you on now, and what's the biggest frustration?"></textarea>
     </form>
     <p class="fine-print">$39/month flat. AI attribution analysis. Klaviyo + GA4 integration. No order-volume pricing.</p>
     <div class="proof">
       <p>Built by a Shopify merchant who got hit with a 400% price increase. Currently in beta.</p>
     </div>
   </div>
+  <script>
+    var ref = new URLSearchParams(location.search).get('ref');
+    if (ref) { document.getElementById('source').value = ref.slice(0, 60); }
+  </script>
 </body>
 </html>
