@@ -53,12 +53,15 @@
     }
     form {
       display: flex;
+      flex-direction: column;
       gap: 10px;
       max-width: 420px;
       margin: 0 auto 20px;
     }
-    input[type="email"] {
+    .row { display: flex; gap: 10px; }
+    input[type="email"], textarea {
       flex: 1;
+      width: 100%;
       padding: 14px 16px;
       font-size: 15px;
       border: 1px solid #27272a;
@@ -66,9 +69,11 @@
       background: #18181b;
       color: #ffffff;
       outline: none;
+      font-family: inherit;
     }
-    input[type="email"]:focus { border-color: #60a5fa; }
-    input[type="email"]::placeholder { color: #52525b; }
+    textarea { resize: vertical; min-height: 64px; }
+    input[type="email"]:focus, textarea:focus { border-color: #60a5fa; }
+    input[type="email"]::placeholder, textarea::placeholder { color: #52525b; }
     button {
       padding: 14px 22px;
       font-size: 15px;
@@ -81,6 +86,7 @@
       white-space: nowrap;
     }
     button:hover { background: #3b82f6; }
+    .honey { position: absolute; left: -9999px; opacity: 0; height: 0; width: 0; }
     .fine-print {
       font-size: 13px;
       color: #52525b;
@@ -105,14 +111,25 @@
     <form action="https://formsubmit.co/Aminali10@icloud.com" method="POST">
       <input type="hidden" name="_subject" value="[Agency Reports] New early access request">
       <input type="hidden" name="_captcha" value="false">
+      <input type="hidden" name="_template" value="table">
+      <input type="hidden" name="_next" value="https://auserr2.github.io/ai-saas-studio-validation/agency-reports/thanks.html">
       <input type="hidden" name="product" value="agency-reports">
-      <input type="email" name="email" placeholder="you@youragency.com" required>
-      <button type="submit">Get early access</button>
+      <input type="hidden" name="source" id="source" value="direct">
+      <input type="text" name="_honey" class="honey" tabindex="-1" autocomplete="off">
+      <div class="row">
+        <input type="email" name="email" placeholder="you@youragency.com" required>
+        <button type="submit">Get early access</button>
+      </div>
+      <textarea name="situation" placeholder="Optional: how many clients, and what reporting tool are you on now?"></textarea>
     </form>
     <p class="fine-print">$49/month flat — no per-client fees. Built for agencies who are done paying AgencyAnalytics $20/client/month.</p>
     <div class="proof">
       <p>Built by an agency owner after AgencyAnalytics doubled their per-client fee. Currently accepting beta testers.</p>
     </div>
   </div>
+  <script>
+    var ref = new URLSearchParams(location.search).get('ref');
+    if (ref) { document.getElementById('source').value = ref.slice(0, 60); }
+  </script>
 </body>
 </html>
